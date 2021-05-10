@@ -8,7 +8,7 @@ before_install:
 script:
  - docker run coolshaddy/react-test npm test -- --coverage --watchAll=false
 
-after_install:
+after_success:
  - docker build -t coolshaddy/multi-client ./client 
  - docker build -t coolshaddy/multi-nginx ./nginx
  - docker build -t coolshaddy/multi-server ./server
