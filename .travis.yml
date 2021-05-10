@@ -1,0 +1,22 @@
+sudo: required
+services:
+ - docker
+
+before_install:
+ - docker build -t coolshaddy/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+ - docker run coolshaddy/react-test npm test -- --coverage
+
+after_install:
+ - docker build -t coolshaddy/multi-client ./client 
+ - docker build -t coolshaddy/multi-nginx ./nginx
+ - docker build -t coolshaddy/multi-server ./server
+ - docker build -t coolshaddy/multi-worker ./worker
+ # Login to docker first 
+ - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+ # now take these images and push them to docker hub 
+ - docker push coolshaddy/multi-client
+ - docker push coolshaddy/multi-nginx
+ - docker push coolshaddy/multi-server
+ - docker push coolshaddy/multi-worker
