@@ -13,7 +13,7 @@ after_success:
  - docker build -t coolshaddy/multi-nginx ./nginx
  - docker build -t coolshaddy/multi-server ./server
  - docker build -t coolshaddy/multi-worker ./worker
- # Login to docker first 
+ # Login to docker firstt
  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
  # now take these images and push them to docker hub 
  - docker push coolshaddy/multi-client
