@@ -14,7 +14,7 @@ after_success:
  - docker build -t coolshaddy/multi-server:latest ./server
  - docker build -t coolshaddy/multi-worker:latest ./worker
  
- - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+ - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
  
  - docker push coolshaddy/multi-client:latest
  - docker push coolshaddy/multi-nginx:latest
