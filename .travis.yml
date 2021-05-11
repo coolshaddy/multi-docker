@@ -9,14 +9,14 @@ script:
  - docker run coolshaddy/react-test npm test -- --coverage 
 
 after_success:
- - docker build -t coolshaddy/multi-client ./client 
- - docker build -t coolshaddy/multi-nginx ./nginx
- - docker build -t coolshaddy/multi-server ./server
- - docker build -t coolshaddy/multi-worker ./worker
+ - docker build -t coolshaddy81/multi-client ./client 
+ - docker build -t coolshaddy81/multi-nginx ./nginx
+ - docker build -t coolshaddy81/multi-server ./server
+ - docker build -t coolshaddy81/multi-worker ./worker
  
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
  
- - docker push coolshaddy/multi-client
- - docker push coolshaddy/multi-nginx
- - docker push coolshaddy/multi-server
- - docker push coolshaddy/multi-worker
+ - docker push coolshaddy81/multi-client
+ - docker push coolshaddy81/multi-nginx
+ - docker push coolshaddy81/multi-server
+ - docker push coolshaddy81/multi-worker
